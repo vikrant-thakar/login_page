@@ -1,0 +1,76 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #626cd6;
+  padding: 20px;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+}
+
+.controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  padding: 10px 20px;
+  background: #e74c3c;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+}
+
+.user-card h3 {
+  margin-top: 0;
+  color: #2980b9;
+}
+
+.user-card p {
+  margin: 6px 0;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .user-card {
+    padding: 15px;
+  }
+}
+
+.logout-btn {
+  background-color: white;
+  color: #2980b9;
+  font-weight: bold;
+  border: solid 1px #2980b9;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  right: 10px;
+  position: absolute;
+}

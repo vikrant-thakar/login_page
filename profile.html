@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="profile.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+
+
+  
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  
+
+  <div class="profile-container">
+    <h2>Your Profile</h2>
+    <form id="profileForm">
+      <label>First Name: <input type="text" id="firstName" required></label>
+      <label>Last Name: <input type="text" id="lastName" required></label>
+      <label>Username: <input type="text" id="username" required></label>
+      <label>Email: <input type="email" id="email" required></label>
+      <label>Password: <input type="password" id="password" required></label>
+      <button type="submit">Save Changes</button>
+    </form>
+
+    <button class="delete-btn" onclick="deleteProfile()">Delete Profile</button>
+
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
