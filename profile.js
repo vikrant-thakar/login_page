@@ -13,7 +13,8 @@ document.getElementById('firstName').value = user.firstName;
 document.getElementById('lastName').value = user.lastName;
 document.getElementById('username').value = user.username;
 document.getElementById('email').value = user.email;
-document.getElementById('password').value = user.password;
+const decryptedPassword = CryptoJS.AES.decrypt(user.password, secretKey).toString(CryptoJS.enc.Utf8);
+document.getElementById('password').value = decryptedPassword;
 
 // Save updates
 document.getElementById('profileForm').addEventListener('submit', function (e) {
