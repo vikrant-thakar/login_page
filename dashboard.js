@@ -51,10 +51,13 @@ async function clearAllUsers() {
 }
 
 async function logout() {
-  localStorage.removeItem('currentUserIndex');
-  localStorage.removeItem('isAdminLoggedIn');
-  await showModal("Logged out successfully.", "alert");
-  window.location.href = "admin.html";
+  const confirmed = await showModal("Are you sure you want to logout?", "confirm");
+  if (confirmed) {
+    localStorage.removeItem('currentUserIndex');
+    localStorage.removeItem('isAdminLoggedIn');
+    await showModal("Logged out successfully.", "alert");
+    window.location.href = "admin.html";
+  }
 }
 
 function showModal(message, type = "alert") {
