@@ -5,6 +5,11 @@ function renderUsers() {
   userTableBody.innerHTML = '';
   if (users.length === 0) {
     userTableBody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No users registered yet.</td></tr>`;
+    // Initialize DataTable even if empty
+    if ($.fn.dataTable.isDataTable('#userTable')) {
+      $('#userTable').DataTable().destroy();
+    }
+    $('#userTable').DataTable();
     return;
   }
 
@@ -28,6 +33,12 @@ function renderUsers() {
     `;
     userTableBody.appendChild(row);
   });
+
+  // Initialize or re-initialize DataTable
+  if ($.fn.dataTable.isDataTable('#userTable')) {
+    $('#userTable').DataTable().destroy();
+  }
+  $('#userTable').DataTable();
 }
 
 async function deleteUser(index) {
