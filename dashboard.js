@@ -1,28 +1,32 @@
-const userListDiv = document.getElementById('userList');
+const userTableBody = document.getElementById('userTableBody');
 let users = JSON.parse(localStorage.getItem('usersList')) || [];
 
 function renderUsers() {
-  userListDiv.innerHTML = '';
+  userTableBody.innerHTML = '';
   if (users.length === 0) {
-    userListDiv.innerHTML = '<p style="text-align:center;">No users registered yet.</p>';
+    userTableBody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No users registered yet.</td></tr>`;
     return;
   }
 
-  users.forEach((user, index) => {
-    const userCard = document.createElement('div');
-    userCard.className = 'user-card';
+  // Sort users by username (case-insensitive)
+  const sortedUsers = [...users].sort((a, b) =>
+    a.username.toLowerCase().localeCompare(b.username.toLowerCase())
+  );
 
-    userCard.innerHTML = `
-      <h3>User ${index + 1}</h3>
-      <p><strong>First Name:</strong> ${user.firstName}</p>
-      <p><strong>Last Name:</strong> ${user.lastName}</p>
-      <p><strong>Username:</strong> ${user.username}</p>
-      <p><strong>Email:</strong> ${user.email}</p>
-      <p><strong>Password:</strong> ******</p>
-      <button class="delete-btn" onclick="deleteUser(${index})">Delete</button>
+  sortedUsers.forEach((user, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${user.firstName}</td>
+      <td>${user.lastName}</td>
+      <td>${user.username}</td>
+      <td>${user.email}</td>
+      <td>******</td>
+      <td>
+        <button class="delete-btn" onclick="deleteUser(${users.indexOf(user)})">Delete</button>
+      </td>
     `;
-
-    userListDiv.appendChild(userCard);
+    userTableBody.appendChild(row);
   });
 }
 

@@ -46,21 +46,13 @@ h2 {
 }
 
 .delete-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   background: #e74c3c;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 5px 12px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-@media (max-width: 600px) {
-  .user-card {
-    padding: 15px;
-  }
+  font-size: 14px;
 }
 
 .logout-btn {
@@ -73,4 +65,40 @@ h2 {
   cursor: pointer;
   right: 10px;
   position: absolute;
+}
+
+#userTableContainer {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0 auto 20px auto;
+  max-width: 900px;
+}
+
+#userTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#userTable th, #userTable td {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+#userTable th {
+  background: #2980b9;
+  color: #fff;
+}
+
+#userTable tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .user-card {
+    padding: 15px;
+  }
 }

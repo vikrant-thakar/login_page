@@ -17,7 +17,24 @@
     <button onclick="clearAllUsers()">Clear All Users</button>
   </div>
 
-  <div id="userList"></div>
+  <div id="userTableContainer">
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody">
+      <!-- Users will be rendered here -->
+    </tbody>
+  </table>
+</div>
 
   <script src="dashboard.js"></script>
 </body>
