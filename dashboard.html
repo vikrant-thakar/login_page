@@ -36,6 +36,24 @@
   </table>
 </div>
 
+<!-- Modal for confirmation and alerts -->
+<div id="customModal" class="modal">
+  <div class="modal-content">
+    <p id="modalMessage"></p>
+    <div id="modalButtons">
+      <button id="modalOkBtn" style="display:none;">OK</button>
+      <button id="modalYesBtn" style="display:none;">Yes</button>
+      <button id="modalNoBtn" style="display:none;">No</button>
+    </div>
+  </div>
+</div>
+
   <script src="dashboard.js"></script>
+  <script>
+  // If not logged in as admin, redirect to sign in
+  if (localStorage.getItem('isAdminLoggedIn') !== 'true') {
+    window.location.href = "admin.html";
+  }
+</script>
 </body>
 </html>

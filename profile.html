@@ -8,7 +8,16 @@
 </head>
 <body>
 
-
+<script>
+  // If not logged in as user, redirect to sign in
+  if (!localStorage.getItem('currentUserIndex')) {
+    window.location.href = "admin.html";
+  }
+  // If logged in as admin, redirect to dashboard
+  if (localStorage.getItem('isAdminLoggedIn') === 'true') {
+    window.location.href = "dashboard.html";
+  }
+</script>
   
     <button class="logout-btn" onclick="logout()">Logout</button>
   
@@ -16,17 +25,34 @@
   <div class="profile-container">
     <h2>Your Profile</h2>
     <form id="profileForm">
-      <label>First Name: <input type="text" id="firstName" required></label>
-      <label>Last Name: <input type="text" id="lastName" required></label>
-      <label>Username: <input type="text" id="username" required></label>
-      <label>Email: <input type="email" id="email" required></label>
-      <label>Password: <input type="password" id="password" required></label>
+      <label>First Name: <input type="text" id="firstName"></label>
+      <div class="error-message" id="firstNameError"></div>
+      <label>Last Name: <input type="text" id="lastName"></label>
+      <div class="error-message" id="lastNameError"></div>
+      <label>Username: <input type="text" id="username"></label>
+      <div class="error-message" id="usernameError"></div>
+      <label>Email: <input type="text" id="email"></label>
+      <div class="error-message" id="emailError"></div>
+      <label>Password: <input type="password" id="password"></label>
+      <div class="error-message" id="passwordError"></div>
       <button type="submit">Save Changes</button>
     </form>
 
     <button class="delete-btn" onclick="deleteProfile()">Delete Profile</button>
 
   </div>
+
+  <!-- Modal for confirmation and alerts -->
+<div id="customModal" class="modal">
+  <div class="modal-content">
+    <p id="modalMessage"></p>
+    <div id="modalButtons">
+      <button id="modalOkBtn" style="display:none;">OK</button>
+      <button id="modalYesBtn" style="display:none;">Yes</button>
+      <button id="modalNoBtn" style="display:none;">No</button>
+    </div>
+  </div>
+</div>
 
   <script src="profile.js"></script>
 </body>

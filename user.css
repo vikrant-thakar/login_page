@@ -97,3 +97,42 @@ section {
 #password {
     width: 100%;  
 }
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 250px;
+  max-width: 90vw;
+}
+.modal-content button {
+  margin: 10px 8px 0 8px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 5px;
+  background: #2980b9;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal-content button#modalNoBtn {
+  background: #e74c3c;
+}
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: -18px;
+  margin-bottom: 10px;
+  min-height: 18px;
+}

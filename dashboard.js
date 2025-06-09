@@ -30,31 +30,75 @@ function renderUsers() {
   });
 }
 
-function deleteUser(index) {
-  if (confirm("Are you sure you want to delete this user?")) {
+async function deleteUser(index) {
+  const confirmed = await showModal("Are you sure you want to delete this user?", "confirm");
+  if (confirmed) {
     users.splice(index, 1);
     localStorage.setItem('usersList', JSON.stringify(users));
     renderUsers();
+    showModal("User deleted successfully.", "alert");
   }
 }
 
-function clearAllUsers() {
-  if (confirm("This will remove all users. Are you sure?")) {
+async function clearAllUsers() {
+  const confirmed = await showModal("This will remove all users. Are you sure?", "confirm");
+  if (confirmed) {
     localStorage.removeItem('usersList');
     users = [];
     renderUsers();
+    showModal("All users have been removed.", "alert");
   }
+}
+
+async function logout() {
+  localStorage.removeItem('currentUserIndex');
+  localStorage.removeItem('isAdminLoggedIn');
+  await showModal("Logged out successfully.", "alert");
+  window.location.href = "admin.html";
+}
+
+function showModal(message, type = "alert") {
+  return new Promise((resolve) => {
+    const modal = document.getElementById('customModal');
+    const msg = document.getElementById('modalMessage');
+    const okBtn = document.getElementById('modalOkBtn');
+    const yesBtn = document.getElementById('modalYesBtn');
+    const noBtn = document.getElementById('modalNoBtn');
+
+    msg.textContent = message;
+    okBtn.style.display = "none";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+
+    if (type === "alert") {
+      okBtn.style.display = "inline-block";
+      okBtn.onclick = () => {
+        modal.style.display = "none";
+        resolve(true);
+      };
+    } else if (type === "confirm") {
+      yesBtn.style.display = "inline-block";
+      noBtn.style.display = "inline-block";
+      yesBtn.onclick = () => {
+        modal.style.display = "none";
+        resolve(true);
+      };
+      noBtn.onclick = () => {
+        modal.style.display = "none";
+        resolve(false);
+      };
+    }
+
+    modal.style.display = "flex";
+  });
+}
+
+// Check admin login status
+if (localStorage.getItem('isAdminLoggedIn') !== 'true') {
+  window.location.href = "admin.html";
 }
 
 // Initial render
 renderUsers();
-
-
-  function logout() {
-    localStorage.removeItem('currentUserIndex');
-    localStorage.removeItem('isAdminLoggedIn');
-    alert("Logged out successfully.");
-    window.location.href = "admin.html";
-  }
 
 
